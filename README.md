@@ -1,4 +1,4 @@
-# 테킷 스쿨 JavaScript 과제 저장소
+# 테킷 스쿨 Javascript 과제
 
 ## 0. mission00 - 함수 만들기
 [mission00로 이동](mission00/Misson-0.js)
