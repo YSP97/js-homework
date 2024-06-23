@@ -2,7 +2,7 @@
 function getValueAtObject(obj, key) {
   if (Object.prototype.toString.call(obj).slice(8, -1).toLowerCase() === 'object') {
     if (typeof key === 'string'){
-      if (obj[key]) {
+      if (Object.prototype.hasOwnProperty.call(obj,key)) {
         return obj[key];
       } 
       else {
@@ -10,7 +10,7 @@ function getValueAtObject(obj, key) {
       }
     }
     else{
-      throw new Error('두 번째 인수에는 문자열을 입력하세요.');
+      throw new Error('두 번째 인수에는 문자 타입을 입력하세요.');
     }
   } 
   else {

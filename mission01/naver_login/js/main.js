@@ -1,20 +1,17 @@
-
 const user = {
   id: 'asd@naver.com',
   pw: 'spdlqj123!@',
 };
 
+// getNode 함수
+function getNode(node, context = document) {
+  if (context.nodeType !== 9) context = document.querySelector(context);
+  return context.querySelector(node);
+}
 
 
-/*
-
-1. email 정규표현식을 사용한 validation
-2. pw 정규표현식을 사용한 validation
-3. 상태 변수 관리
-4. 로그인 버튼을 클릭시 조건처리
-
-*/
-
+// 로그인 버튼
+const btn = getNode('.btn-login');
 
 // email 정규표현식 validation 함수
 function emailReg(text) {
@@ -22,51 +19,86 @@ function emailReg(text) {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(text).toLowerCase());
 }
-// pw 정규표현식을 사용한 validation 함수 
+
+// pw 정규표현식을 사용한 validation 함수
 function pwReg(text) {
   const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
   return re.test(String(text));
 }
 
+// 에러 메세지 on
+function showError(input, error) {
+  error.classList.add('is--invalid');
+  error.setAttribute('aria-hidden', 'false');
+  error.setAttribute('aria-live', 'assertive');
+  input.setAttribute('aria-invalid', 'true');
+  input.value = '';
+  input.focus();
+  input.setAttribute('tabindex', '0');
+}
+
+// 에러 메세지 off
+function hideError(input, error) {
+  error.classList.remove('is--invalid');
+  error.setAttribute('aria-hidden', 'true');
+  error.setAttribute('aria-live', 'off');
+  input.setAttribute('aria-invalid', 'false');
+}
+
 // user 정보와 일치 확인
-function isSameUser(id, pwd) {
+function validationUserData(id, pwd) {
+  const errorLogin = getNode('#loginError');
+  const inputPw = getNode('#userPassword');
+
   if (id === user.id && pwd === user.pw) {
-    location.href = "welcome.html";
+    clearInputs();
+    location.href = 'welcome.html';
   } else {
-    alert('아이디와 비밀번호가 일치하지 않습니다.');
+    showError(inputPw, errorLogin);
   }
 }
 
 // validation
-function validationUserInfo(event) {
+function handleValidation(event) {
+  // 클릭 이벤트 발생 시 폼 제출 방지
   event.preventDefault();
-  let inputId = document.getElementById('userEmail').value;
-  let inputPw = document.getElementById('userPassword').value;
 
-  const validId = emailReg(inputId);
-  const validPw = pwReg(inputPw);
+  const inputEmail = getNode('#userEmail');
+  const inputPw = getNode('#userPassword');
+  const errorEmail = getNode('#userEmailError');
+  const errorPwd = getNode('#userPasswordError');
+  const errorLogin = getNode('#loginError');
 
-  let errorId = document.getElementById('userEmailError');
-  let errorPwd = document.getElementById('userPasswordError');
+  const validEmail = emailReg(inputEmail.value);
+  const validPw = pwReg(inputPw.value);
 
   // 초기화
-  errorId.style.display = 'none';
-  errorPwd.style.display = 'none';
+  hideError(inputEmail, errorEmail);
+  hideError(inputPw, errorPwd);
+  errorLogin.classList.remove('is--invalid');
 
-  if (validId && validPw) {
-    isSameUser(inputId, inputPw);
-  } else if (!validId && validPw) {
-    errorId.style.display = 'block';
-    errorPwd.style.display = 'none';
-  } else if (validId && !validPw) {
-    errorId.style.display = 'none';
-    errorPwd.style.display = 'block';
+  if (validEmail && validPw) {
+    validationUserData(inputEmail.value, inputPw.value);
+  } else if (!validEmail && validPw) {
+    showError(inputEmail, errorEmail);
+  } else if (validEmail && !validPw) {
+    showError(inputPw, errorPwd);
   } else {
-    errorId.style.display = 'block';
-    errorPwd.style.display = 'block';
+    showError(inputPw, errorPwd);
+    showError(inputEmail, errorEmail);
   }
 }
 
-document
-  .querySelector('.btn-login')
-  .addEventListener('click', validationUserInfo);
+// 입력값 초기화
+function clearInputs() {
+  const inputEmail = getNode('#userEmail');
+  const inputPw = getNode('#userPassword');
+  inputEmail.value = '';
+  inputPw.value = '';
+  inputEmail.focus();
+}
+
+// 링크 이동 후 이전 페이지로 돌아가거나 새로고침 시 clearInput 실행하는 이벤트 프로퍼티
+window.onload = clearInputs;
+
+btn.addEventListener('click', handleValidation);
