@@ -7,3 +7,6 @@
 ## 1. mission01 - 네이버 로그인
 
 [mission01로 이동](./mission01/naver_login/README.md)
+
+## 2. mission02 - 엘리멘탈 이미지 클릭 이벤트
+[mission02로 이동](./mission02/README.md)
