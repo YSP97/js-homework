@@ -21,28 +21,28 @@ function setBgColor(selector, startColor, endColor) {
 }
 
 // 이미지 설정 함수
-function setImage(field, file) {
-  field.src = `./assets/${file.name}.jpeg`;
-  field.alt = file.alt;
+function setImage(field, item) {
+  field.src = `./assets/${item.name}.jpeg`;
+  field.alt = item.alt;
 }
 
 // 제목 수정 함수
-function setNameText(selector, file) {
+function setNameText(selector, item) {
   const node = getNode(selector);
-  node.textContent = file.name;
+  node.textContent = item.name;
 }
 
 // 오디오 생성하고 재생하는 함수
 function createAudioPlayer() {
   let audio = null;
 
-  return function playAudio(file) {
+  return function playAudio(item) {
     if (audio) {
       audio.pause();
       audio = null;
     }
 
-    audio = new Audio(`./assets/audio/${file.name}.m4a`);
+    audio = new Audio(`./assets/audio/${item.name}.m4a`);
     audio.play();
   };
 }
