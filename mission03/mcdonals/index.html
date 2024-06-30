@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="./main.js"></script>
+    <title>맥도날드</title>
+</head>
+<body>
+  <header class="header">
+    <img src="./assets/logo.png" alt="" />
+  </header>
+    <section class="visual-sec">
+        <div class="swiper main-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="500" src="./assets/mcspicy.jpg" alt="새로워진 맥 스파이시" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/crispydelux.jpg" alt="맥 크리스피 디럭스" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/mcflurry.jpg" alt="맥 플러리" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/mclunch.jpg" alt="맥 런치" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/mcwing.jpg" alt="맥 윙" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/snack.jpg" alt="스낵" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/spicytabasco.jpg" alt="맥 스파이시 타바스코" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/tomatoChesse.jpg" alt="맥 토마토 치즈 디럭스" />
+                </div>
+                <div class="swiper-slide">
+                  <img data-swiper-parallax-scale="1.2" data-swiper-parallax-x="200" src="./assets/employment.jpg" alt="채용" />
+                </div>
+                <div class="swiper-slide">
+                  <div class="video-slide">
+                    <video autoplay playsinline muted id="bigmac-video">
+                      <source src="./assets/bigmac.mp4" type="video/mp4"/>
+                    </video>
+                    <button class="volume-btn">
+                      <i class="fas fa-volume-xmark volume-off"></i>
+                    </button>
+                  </div>
+                </div>
+
+            </div>
+            <div class="progress-group">
+              <button class="slide-btn">
+                <i class="fas fa-pause"></i>
+              </button>
+              <div class="all-box">
+                  <div class="progress-box">
+                      <div class="swiper-pagination"></div>
+                      <div class="autoplay-progress">
+                          <svg viewBox="0 0 100 10" preserveAspectRatio="none">
+                              <line x1="0" y1="5" x2="100" y2="5">
+                          </svg>
+                      </div>
+                  </div>
+              </div>
+            </div>
+              <div class="arrow-box">
+                  <div class="swiper-button swiper-button-prev"></div>
+                  <div class="swiper-button swiper-button-next"></div>
+              </div>
+        </div>
+    </section>
+</body>
+</html>

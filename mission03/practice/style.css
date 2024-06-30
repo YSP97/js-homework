@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'GenKJwajinOTF-Rg';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GenKJwajinOTF-Rg.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+body {
+  background: #000000;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  height: 90px;
+  span {
+    color: white;
+  }
+  img {
+    width: 30px;
+    height: 50px;
+  }
+
+  span {
+    font-size: 50px;
+    font-family: 'GenKJwajinOTF-Rg';
+  }
+  align-items: center;
+  gap: 20px;
+  flex-flow: column nowrap;
+}
+
+section {
+  position: relative;
+}
+
+.swiper {
+  margin: 100px auto;
+  width: 450px;
+  height: 650px;
+  margin-top: 20px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.swiper-pagination {
+  color: white;
+}
